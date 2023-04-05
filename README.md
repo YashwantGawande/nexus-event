@@ -23,10 +23,6 @@ To contribute, please follow these steps:
 4. Push your changes to your fork.
 5. Submit a pull request to the main repository.
 
-## License
-
-Nexus Event is released under the [MIT License](https://opensource.org/licenses/MIT). Please see the `LICENSE` file for more information.
-
 ## Contact
 
 For questions, issues, or suggestions, please contact [@YashwantGawande](https://github.com/YashwantGawande).

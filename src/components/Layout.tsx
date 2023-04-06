@@ -1,3 +1,4 @@
+import FollowBar from "./layout/FollowBar";
 import Sidebar from "./layout/Sidebar";
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -9,6 +10,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
           <div className="col-span-3 lg:col-span-2 border-x-[1px] border-neutral-800">
             {children}
           </div>
+          <FollowBar/>
         </div>
       </div>
     </div>

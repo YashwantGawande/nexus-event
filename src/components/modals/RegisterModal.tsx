@@ -14,10 +14,18 @@ const RegisterModal = () => {
   const [username, setUsername] = useState("");
   const [loading, setLoading] = useState(false);
 
+  const onToggle = useCallback(() => {
+    if (loading) {
+      return;
+    }
+    registerModal.onClose();
+    loginModal.onOpen();
+  }, [loading,registerModal,loginModal]);
+
   const onSubmit = useCallback(async () => {
     try {
       setLoading(true);
-      
+
       //TODO ADD REGISTER AND LOGIN
 
       registerModal.onClose();
@@ -57,6 +65,17 @@ const RegisterModal = () => {
     </div>
   );
 
+  const footerContent = (
+    <div className="mt-4 text-center text-neutral-400">
+      <p>
+        Already have an account
+        <span className="ml-1 text-white cursor-pointer hover:underline" onClick={onToggle}>
+          Sign in
+        </span>
+      </p>
+    </div>
+  );
+
   return (
     <Modal
       disabled={loading}
@@ -66,6 +85,7 @@ const RegisterModal = () => {
       onClose={registerModal.onClose}
       onSubmit={onSubmit}
       body={bodyContent}
+      footer={footerContent}
     />
   );
 };

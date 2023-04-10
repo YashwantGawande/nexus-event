@@ -2,20 +2,29 @@ import { useCallback, useState } from "react";
 import useLoginModal from "../hooks/useLoginModal";
 import Input from "../Input";
 import Modal from "../Modal";
+import useRegisterModal from "../hooks/useRegisterModal";
 
 const LoginModal = () => {
   const loginModal = useLoginModal();
+  const registerModal = useRegisterModal();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+
+  const onToggle = useCallback(() => {
+    if (loading) {
+      return;
+    }
+    loginModal.onClose();
+    registerModal.onOpen();
+  }, [loading, registerModal, loginModal]);
 
   const onSubmit = useCallback(async () => {
     try {
       setLoading(true);
 
       //TODO ADD LOGIN
-
 
       loginModal.onClose();
     } catch (error) {
@@ -42,6 +51,17 @@ const LoginModal = () => {
     </div>
   );
 
+  const footerContent = (
+    <div className="mt-4 text-center text-neutral-400">
+      <p>
+        First time using Nexus Event?
+        <span className="ml-1 text-white cursor-pointer hover:underline" onClick={onToggle}>
+          Create an account
+        </span>
+      </p>
+    </div>
+  );
+
   return (
     <Modal
       disabled={loading}
@@ -51,6 +71,7 @@ const LoginModal = () => {
       onClose={loginModal.onClose}
       onSubmit={onSubmit}
       body={bodyContent}
+      footer={footerContent}
     />
   );
 };

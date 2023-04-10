@@ -20,7 +20,7 @@ const Input: React.FC<InputProps> = ({
       value={value}
       placeholder={placeholder}
       type={type}
-      className="w-full p-4 text-lg text-white transition bg-black border-2 rounded-md outline-none border-neutral-800 focus:border-sky-500 focus:border-2 disabled:bg-neutral-500 disabled:opacity-70 disabled:cursor-not-allowed"
+      className="w-full p-4 text-lg text-white transition bg-black border-2 rounded-md outline-none border-neutral-800 focus:border-purple-500 focus:border-2 disabled:bg-neutral-500 disabled:opacity-70 disabled:cursor-not-allowed"
     />
   );
 };

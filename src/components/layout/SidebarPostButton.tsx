@@ -5,11 +5,11 @@ import { useCallback } from "react";
 
 const SidebarPostButton = () => {
   const router = useRouter();
-  // const loginModal = useLoginModal();
+  const loginModal = useLoginModal();
 
   const onClick = useCallback(() => {
-    // loginModal.onOpen();
-  }, [/*loginModal*/]);
+     loginModal.onOpen();
+  }, [loginModal]);
   return (
     <div onClick={onClick}>
       <div className="flex items-center justify-center p-4 mt-6 transition bg-purple-500 rounded-full cursor-pointer lg:hidden h-14 w-14 hover:bg-opacity-80">

@@ -3,6 +3,7 @@ import useLoginModal from "../hooks/useLoginModal";
 import Input from "../Input";
 import Modal from "../Modal";
 import useRegisterModal from "../hooks/useRegisterModal";
+import { signIn } from "next-auth/react";
 
 const LoginModal = () => {
   const loginModal = useLoginModal();
@@ -24,7 +25,10 @@ const LoginModal = () => {
     try {
       setLoading(true);
 
-      //TODO ADD LOGIN
+      await signIn("credentials", {
+        email,
+        password,
+      });
 
       loginModal.onClose();
     } catch (error) {
@@ -32,7 +36,7 @@ const LoginModal = () => {
     } finally {
       setLoading(false);
     }
-  }, [loginModal]);
+  }, [loginModal, email, password]);
 
   const bodyContent = (
     <div className="flex flex-col gap-4">
@@ -44,6 +48,7 @@ const LoginModal = () => {
       />
       <Input
         placeholder="Password"
+        type="password"
         onChange={(e) => setPassword(e.target.value)}
         value={password}
         disabled={loading}
@@ -55,7 +60,10 @@ const LoginModal = () => {
     <div className="mt-4 text-center text-neutral-400">
       <p>
         First time using Nexus Event?
-        <span className="ml-1 text-white cursor-pointer hover:underline" onClick={onToggle}>
+        <span
+          className="ml-1 text-white cursor-pointer hover:underline"
+          onClick={onToggle}
+        >
           Create an account
         </span>
       </p>

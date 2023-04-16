@@ -36,9 +36,11 @@ const Avatar: React.FC<AvatarProps> = ({ userId, isLarge, hasBorder }) => {
       <Image
         fill
         style={{ objectFit: "cover", borderRadius: "100%" }}
+        sizes="(max-width: 640px) 12px, (min-width: 641px) 32px"
         alt="Avatar"
         onClick={onClick}
         src={fetchedUser?.profileImage || "/images/placeholder.png"}
+        loading="lazy"
       />
     </div>
   );

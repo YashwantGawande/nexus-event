@@ -1,10 +1,10 @@
 import Header from "@/components/Header";
 import useUser from "@/components/hooks/useUser";
-import UserHero from "./UserHero";
+import UserHero from "../../components/users/UserHero";
 
 import { useRouter } from "next/router";
 import { ClipLoader } from "react-spinners";
-import UserBio from "./UserBio";
+import UserBio from "../../components/users/UserBio";
 
 const UserView = () => {
   const router = useRouter();

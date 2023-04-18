@@ -10,12 +10,12 @@ export default async function handler(
     return res.status(405).end();
   }
   try {
-    const { currentUser } = await serverAuth(req);
+    const { currentUser } = await serverAuth(req, res);
     const { name, username, bio, profileImage, coverImage } = req.body;
     if (!name || !username) {
       throw new Error("Missing fields");
     }
-    const updatedUser = await prisma?.user.update({
+    const updatedUser = await prisma.user.update({
       where: {
         id: currentUser.id,
       },

@@ -1,10 +1,10 @@
 import format from "date-fns/format";
+import { useMemo } from "react";
+import { BiCalendar } from "react-icons/bi";
 
 import useCurrentUser from "@/components/hooks/useCurrentUser";
 import useUser from "@/components/hooks/useUser";
-import { useMemo } from "react";
 import Button from "@/components/Button";
-import { BiCalendar } from "react-icons/bi";
 import useEditModal from "../hooks/useEditModal";
 import useFollow from "../hooks/useFollow";
 
@@ -12,8 +12,8 @@ interface UserBioProps {
   userId: string;
 }
 const UserBio: React.FC<UserBioProps> = ({ userId }) => {
-  const { data: fetchedUser } = useUser(userId);
   const { data: currentUser } = useCurrentUser();
+  const { data: fetchedUser } = useUser(userId);
 
   const editModal = useEditModal();
 
@@ -61,7 +61,7 @@ const UserBio: React.FC<UserBioProps> = ({ userId }) => {
           </div>
           <div className="flex flex-row items-center gap-1">
             <p className="text-white">{fetchedUser?.followersCount || 0}</p>
-            <p className="text-neutral-500">Followers</p>
+            <p className="text-neutral-500">{fetchedUser?.followersCount === 1 ? "Follower":"Followers"}</p>
           </div>
         </div>
       </div>

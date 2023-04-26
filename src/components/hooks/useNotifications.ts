@@ -13,3 +13,4 @@ const useNotifications = (userId?: string) => {
     mutate,
   };
 };
+export default useNotifications;
